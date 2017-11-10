@@ -36,6 +36,7 @@ public class Pixel {
   
   public GVector normal = null;
   
+  //the index of this pixel in the screen buffer
   public int index;
   
   public Pixel(){
