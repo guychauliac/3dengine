@@ -13,8 +13,8 @@ import java.util.HashMap;
 import chabernac.image.ImageFactory;
 
 public class TextureFactory {
-  private static HashMap MAP = new HashMap();
-  private static HashMap BUMP_MAP = new HashMap();
+  private static HashMap<String, TextureImage> MAP = new HashMap<>();
+  private static HashMap<String, BumpMap> BUMP_MAP = new HashMap<>();
 
   public static TextureImage getTexture(String aTexture, boolean isTransparent) throws IOException{
     if(!MAP.containsKey(aTexture)){

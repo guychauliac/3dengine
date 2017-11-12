@@ -64,7 +64,8 @@ public class Texture2 implements iTranslatable{
       }
       float u = thePoint.getAlpha() / (2 * (float)Math.PI) ;
       float v = (float)0.5 - thePoint.getBeta() / (float)Math.PI;
-      return new Point2D(u * myImage.width, v * myImage.height);
+//      return new Point2D(u * myImage.width, v * myImage.height);
+      return new Point2D(u, v);
     } else {
       Point3D thePoint = mySystem.getTransformator().transform(aVertex.myPoint);
       return new Point2D(thePoint.x, thePoint.y);

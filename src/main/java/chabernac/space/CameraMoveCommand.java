@@ -8,7 +8,7 @@ package chabernac.space;
 
 import org.apache.log4j.Logger;
 
-import chabernac.control.SynchronizedEventManager;
+import chabernac.control.ISynchronizedEventManager;
 import chabernac.control.SynchronizedKeyCommand;
 import chabernac.math.MatrixException;
 
@@ -30,7 +30,7 @@ public class CameraMoveCommand extends SynchronizedKeyCommand {
 	 * @param aDescription
 	 * @param aTimer
 	 */
-	public CameraMoveCommand(String aDescription, SynchronizedEventManager aManager, Camera aTargetCamera, Camera aTranslationCamera) {
+	public CameraMoveCommand(String aDescription, ISynchronizedEventManager aManager, Camera aTargetCamera, Camera aTranslationCamera) {
 		this(aDescription, aManager, 1, aTargetCamera, aTranslationCamera);
 		// TODO Auto-generated constructor stub
 	}
@@ -40,7 +40,7 @@ public class CameraMoveCommand extends SynchronizedKeyCommand {
 	 * @param aTimer
 	 * @param aTimerInterval
 	 */
-	public CameraMoveCommand( String aDescription, SynchronizedEventManager aManager, int aTimerInterval, Camera aTargetCamera, Camera aTranslationCamera){
+	public CameraMoveCommand( String aDescription, ISynchronizedEventManager aManager, int aTimerInterval, Camera aTargetCamera, Camera aTranslationCamera){
 		super(aDescription, aManager, aTimerInterval);
 		myTargetCamera = aTargetCamera;
 		myTranslationCamera = aTranslationCamera;		

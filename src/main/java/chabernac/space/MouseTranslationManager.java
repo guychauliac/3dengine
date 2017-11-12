@@ -12,9 +12,9 @@ import chabernac.space.geom.Point3D;
 public class MouseTranslationManager extends OneLocationTranslateManager implements MouseMotionListener, MouseWheelListener{
 	private int myDepth;
 	private int myCurrentDepth;
-	private Graphics3D myGraphics = null;
+	private Graphics3DPipeline myGraphics = null;
 
-	public MouseTranslationManager(Graphics3D aGraphics, int aDepth, int aSpeed){
+	public MouseTranslationManager(Graphics3DPipeline aGraphics, int aDepth, int aSpeed){
 		super(new Point3D(0,0,aDepth), aSpeed);
 		myDepth = aDepth;
 		myCurrentDepth = aDepth;

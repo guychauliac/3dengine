@@ -26,7 +26,7 @@ public class Panel3D extends JPanel implements iSynchronizedEvent, MouseListener
 	private static final float NEAR_CLIPPING_PLANE = 0.1F;
 
 	private World myWorld = null;
-	private Graphics3D myGraphics = null;
+	private Graphics3DPipeline myGraphics = null;
 	private Camera myCamera = null;
 	private Graphics2D myG = null;
 	private GraphicsAdapter myGraphicsAdapter;
@@ -62,7 +62,7 @@ public class Panel3D extends JPanel implements iSynchronizedEvent, MouseListener
 	protected void setupGraphics3d() {
 		Point3D theEyePoint = new Point3D(getWidth() / 2, getHeight() / 2, (getWidth() + getHeight()) / 2);
 		myGraphicsAdapter = new GraphicsAdapter(myG, new Graphics3D2D(myWorld, getWidth(), getHeight()));
-		myGraphics = new Graphics3D(new ScreenFrustrum(theEyePoint, new Dimension(getWidth(), getHeight()),
+		myGraphics = new Graphics3DPipeline(new ScreenFrustrum(theEyePoint, new Dimension(getWidth(), getHeight()),
 				NEAR_CLIPPING_PLANE, FAR_CLIPPING_PLANE),
 				theEyePoint,
 				myCamera,
@@ -102,7 +102,7 @@ public class Panel3D extends JPanel implements iSynchronizedEvent, MouseListener
 	/**
 	 * @return
 	 */
-	public Graphics3D getGraphics3D() {
+	public Graphics3DPipeline getGraphics3D() {
 		return myGraphics;
 	}
 
@@ -123,7 +123,7 @@ public class Panel3D extends JPanel implements iSynchronizedEvent, MouseListener
 	/**
 	 * @param graphics3D
 	 */
-	public void setGraphics3D(Graphics3D graphics3D) {
+	public void setGraphics3D(Graphics3DPipeline graphics3D) {
 		myGraphics = graphics3D;
 	}
 

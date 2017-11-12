@@ -44,7 +44,7 @@ public class Frame3D extends JFrame implements iSynchronizedEvent{
   private static int RADIUS = 20;
   private static int AIMLINE = 4;
   private World myWorld = null;
-  private Graphics3D myGraphics = null;
+  private Graphics3DPipeline myGraphics = null;
   private Camera myCamera = null;
   //private boolean stop = false;
   //private Thread myThread = null;
@@ -100,7 +100,7 @@ public class Frame3D extends JFrame implements iSynchronizedEvent{
 
   private void setupGraphics3d(){
     Point3D theEyePoint = new Point3D(getWidth()/2,getHeight()/2,(getWidth() + getHeight())/2);
-    myGraphics = new Graphics3D(new ScreenFrustrum(theEyePoint, new Dimension(getWidth() - 1,getHeight() - 1), 0.001F, 5000),
+    myGraphics = new Graphics3DPipeline(new ScreenFrustrum(theEyePoint, new Dimension(getWidth() - 1,getHeight() - 1), 0.001F, 5000),
                                 theEyePoint,
                                 myCamera,
                                 myWorld,
@@ -182,7 +182,7 @@ public class Frame3D extends JFrame implements iSynchronizedEvent{
     return false;
   }
 
-  public Graphics3D getGraphics3D(){
+  public Graphics3DPipeline getGraphics3D(){
     return myGraphics;
   }
 

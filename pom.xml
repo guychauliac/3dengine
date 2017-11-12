@@ -25,7 +25,7 @@
 			</extension>
 		</extensions>
 
-		<!-- <aspectSourceDirectory>src/aspectj</aspectSourceDirectory>  -->
+		<!-- <aspectSourceDirectory>src/aspectj</aspectSourceDirectory> -->
 
 		<resources>
 			<resource>
@@ -102,6 +102,21 @@
 			<groupId>chabernac</groupId>
 			<artifactId>services</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jogamp.jogl</groupId>
+			<artifactId>jogl</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jogamp.jogl</groupId>
+			<artifactId>jogl-all</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jogamp.gluegen</groupId>
+			<artifactId>gluegen-rt-main</artifactId>
+			<version>2.3.2</version>
 		</dependency>
 	</dependencies>
 </project>

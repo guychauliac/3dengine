@@ -63,7 +63,7 @@ public class CoordinateSystem implements iTranslatable{
 	}
 	
 	public CoordinateSystem(Point3D anOrigin, GVector anXVector, GVector anYVector){
-		this(anOrigin, anXVector, anYVector, anXVector.produkt(anYVector));
+		this(anOrigin, anXVector, anYVector, anXVector.produkt(anYVector).norm().multip((anXVector.length() +  anYVector.length())/2));
 	}
 	
 	public CoordinateSystem(Point3D anOrigin, GVector anXVector, GVector anYVector, GVector aZVector){
