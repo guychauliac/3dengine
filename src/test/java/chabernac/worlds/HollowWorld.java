@@ -140,7 +140,7 @@ public class HollowWorld extends DefaultExitFrame{
     theFrame.setVisible(true);
 
     myKeyMapContainer.addKeyMap(new KeyMap(KeyEvent.VK_L, new DebugKeyCommand(), 2));
-    myManager.addSyncronizedEvent(theFrame);
+    myManager.addSyncronizedEventListener( theFrame);
     myExitKeyCommand.setFullScreenComponent(theFrame);
     theFrame.addKeyListener(new KeyCommandListener(myKeyMapContainer));
     try {

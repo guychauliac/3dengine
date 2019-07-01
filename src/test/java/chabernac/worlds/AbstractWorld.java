@@ -120,7 +120,7 @@ public abstract class AbstractWorld extends JFrame {
   private final void setupRendering(){
     myManager = new SynchronizedEventManager(getFPS());
     myManager.setRestorer( new RecordingRestorer( myCamera ) );
-    myManager.addSyncronizedEvent(myPanel3D);
+    myManager.addSyncronizedEventListener( myPanel3D);
     myManager.startManager();
   }
   
