@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GL2GL3;
+import com.jogamp.opengl.GL3;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLEventListener;
@@ -24,6 +25,7 @@ public class Line implements GLEventListener {
 	}
 
 	private void draw(GLAutoDrawable drawable) {
+		GL3 gl3 = drawable.getGL().getGL3();
 		final GL2 gl = drawable.getGL().getGL2();
 		TextureData data = new TextureData(GLProfile.get(GLProfile.GL2), GL.GL_RGBA, 1, 1, 0, GL.GL_RGBA,
 				GL2GL3.GL_UNSIGNED_INT_8_8_8_8, false, false, false, IntBuffer.wrap(new int[] { 0x0000FFAA }), null); // BGR

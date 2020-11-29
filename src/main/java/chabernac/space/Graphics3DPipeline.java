@@ -220,7 +220,7 @@ public class Graphics3DPipeline {
     for (int i = 0; i < aPolygon.myCamSize; i++) {
       thePolygon.addVertex(
           new Vertex2D(GeomFunctions.cam2Screen(aPolygon.c[i].myPoint, myEyePoint), aPolygon.c[i].myTextureCoordinate,
-              myFrustrum.calculateRelativeDepth(aPolygon.c[i].myPoint.z), aPolygon.c[i].lightIntensity));
+              myFrustrum.calculateRelativeDepth(aPolygon.c[i].myPoint.z), aPolygon.c[i].myPoint.z, aPolygon.c[i].lightIntensity));
     }
     // thePolygon.setColor(aPolygon.getColor());
     // aPolygon.getTexture().cam2screen(myEyePoint);

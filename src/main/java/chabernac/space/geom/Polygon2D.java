@@ -51,7 +51,8 @@ public class Polygon2D {
         
         Point2D thePoint = myLines[i].getPoint(time);
         
-        float Sz = myVertexes[i].getInverseDepth() + time * (myVertexes[j].getInverseDepth() - myVertexes[i].getInverseDepth());
+        float Siz = myVertexes[i].getInverseDepth() + time * (myVertexes[j].getInverseDepth() - myVertexes[i].getInverseDepth());
+        float Sz = myVertexes[i].getDepth() + time * (myVertexes[j].getDepth() - myVertexes[i].getDepth());
         float Su = myVertexes[i].getPerspectiveCorrectTexturePoint().x + time * (myVertexes[j].getPerspectiveCorrectTexturePoint().x - myVertexes[i].getPerspectiveCorrectTexturePoint().x);
         float Sv = myVertexes[i].getPerspectiveCorrectTexturePoint().y + time * (myVertexes[j].getPerspectiveCorrectTexturePoint().y - myVertexes[i].getPerspectiveCorrectTexturePoint().y);
         float li = myVertexes[i].getLightning() + time * (myVertexes[j].getLightning() - myVertexes[i].getLightning());
@@ -59,7 +60,7 @@ public class Polygon2D {
         float u = Su / Sz;
         float v = Sv / Sz;
         
-        theVertexes[current++] = new Vertex2D( thePoint, new Point2D(u,v), Sz, li);
+        theVertexes[current++] = new Vertex2D( thePoint, new Point2D(u,v), Siz, Sz, li);
       }
     }
     

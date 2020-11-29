@@ -76,19 +76,13 @@ public class OpenGLFrame extends JFrame implements GLEventListener {
     keyMapContainer.addKeyMap(new KeyMap(KeyEvent.VK_SPACE, Command3dFactory.forward(myManager, camera, 5), 2));
     keyMapContainer.addKeyMap(new KeyMap(KeyEvent.VK_ALT, Command3dFactory.backward(myManager, camera, 5), 2));
 
-    keyMapContainer.addKeyMap(new KeyMap(new int[] { KeyEvent.VK_LEFT, KeyEvent.VK_NUMPAD4 },
-        Command3dFactory.left(myManager, camera, (float) Math.PI / 144)));
-    keyMapContainer.addKeyMap(new KeyMap(new int[] { KeyEvent.VK_RIGHT, KeyEvent.VK_NUMPAD6 },
-        Command3dFactory.right(myManager, camera, (float) Math.PI / 144)));
-    keyMapContainer.addKeyMap(new KeyMap(new int[] { KeyEvent.VK_DOWN, KeyEvent.VK_NUMPAD2 },
-        Command3dFactory.up(myManager, camera, (float) Math.PI / 144)));
-    keyMapContainer.addKeyMap(new KeyMap(new int[] { KeyEvent.VK_UP, KeyEvent.VK_NUMPAD8 },
-        Command3dFactory.down(myManager, camera, (float) Math.PI / 144)));
+    keyMapContainer.addKeyMap(new KeyMap(new int[] { KeyEvent.VK_LEFT, KeyEvent.VK_NUMPAD4 }, Command3dFactory.left(myManager, camera, (float) Math.PI / 144)));
+    keyMapContainer.addKeyMap(new KeyMap(new int[] { KeyEvent.VK_RIGHT, KeyEvent.VK_NUMPAD6 }, Command3dFactory.right(myManager, camera, (float) Math.PI / 144)));
+    keyMapContainer.addKeyMap(new KeyMap(new int[] { KeyEvent.VK_DOWN, KeyEvent.VK_NUMPAD2 }, Command3dFactory.up(myManager, camera, (float) Math.PI / 144)));
+    keyMapContainer.addKeyMap(new KeyMap(new int[] { KeyEvent.VK_UP, KeyEvent.VK_NUMPAD8 }, Command3dFactory.down(myManager, camera, (float) Math.PI / 144)));
 
-    keyMapContainer.addKeyMap(
-        new KeyMap(KeyEvent.VK_NUMPAD7, Command3dFactory.rollLeft(myManager, camera, (float) Math.PI / 144), 2));
-    keyMapContainer.addKeyMap(
-        new KeyMap(KeyEvent.VK_NUMPAD9, Command3dFactory.rollRight(myManager, camera, (float) Math.PI / 144), 2));
+    keyMapContainer.addKeyMap(new KeyMap(KeyEvent.VK_NUMPAD7, Command3dFactory.rollLeft(myManager, camera, (float) Math.PI / 144), 2));
+    keyMapContainer.addKeyMap(new KeyMap(KeyEvent.VK_NUMPAD9, Command3dFactory.rollRight(myManager, camera, (float) Math.PI / 144), 2));
 
     // myKeyMapContainer.addKeyMap(new KeyMap(KeyEvent.VK_R, new
     // ToggleRecordingCommand( myManager ),1));
@@ -112,9 +106,8 @@ public class OpenGLFrame extends JFrame implements GLEventListener {
 
   private void setupGraphics3d() {
     Point3D theEyePoint = new Point3D(getWidth() / 2, getHeight() / 2, (getWidth() + getHeight()) / 2);
-    pipeline = new Graphics3DPipeline(
-        new ScreenFrustrum(theEyePoint, new Dimension(getWidth() - 1, getHeight() - 1), 0.001F, 5000000), theEyePoint,
-        camera, world, new OpenGLAdapter(gl2));
+    ScreenFrustrum theFrustrum = new ScreenFrustrum(theEyePoint, new Dimension(getWidth() - 1, getHeight() - 1), 0.001F, 5000);
+    pipeline = new Graphics3DPipeline(theFrustrum, theEyePoint, camera, world, new OpenGLAdapter(gl2, theFrustrum.getDepth()));
     pipeline.setVertexShaders(new iVertexShader[] { new GouroudShading((float) 0.3) });
     pipeline.setDimensions(getWidth(), getHeight());
     pipeline.setDrawRibs(false);
@@ -173,7 +166,7 @@ public class OpenGLFrame extends JFrame implements GLEventListener {
     theCosmos.done();
     world.addShape(theCosmos);
 
-    Shape theEarth = ShapeFactory.makeSphere(new Point3D(400, 500, 1000), 800, 40);
+    Shape theEarth = ShapeFactory.makeSphere(new Point3D(400, 500, 1000), 800, 60);
     theEarth.setColor(Color.blue);
     theEarth.setRoom(false);
     theEarth.setTexture("world", false, true);
@@ -190,8 +183,7 @@ public class OpenGLFrame extends JFrame implements GLEventListener {
     theEarthRotationManager.addTranslatable(theEarth);
     world.getTranslateManagerContainer().addTranslateManager(theEarthRotationManager);
 
-    OpenGLFrame theFrame = new OpenGLFrame(world, new Camera(new Point3D(100f, 100f, 0f), new Rotation(0f, 0f, 0f), 1),
-        new Dimension(800, 600));
+    OpenGLFrame theFrame = new OpenGLFrame(world, new Camera(new Point3D(100f, 100f, 0f), new Rotation(0f, 0f, 0f), 1), new Dimension(800, 600));
     theFrame.setVisible(true);
   }
 }

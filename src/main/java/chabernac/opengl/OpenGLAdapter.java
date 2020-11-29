@@ -31,13 +31,15 @@ public class OpenGLAdapter implements i3DGraphics {
   private final GL2 gl2;
   private int halfWidht;
   private int halfHeight;
+  private float frustrumDepth;
 
   private final WeakHashMap<TextureImage, Texture> textureData = new WeakHashMap<>();
 
-  public OpenGLAdapter(GL gl) {
+  public OpenGLAdapter(GL gl, float aFrustrumDepth) {
     super();
     this.gl = gl;
     this.gl2 = gl.getGL2();
+    this.frustrumDepth = aFrustrumDepth;
   }
 
   @Override
@@ -92,7 +94,7 @@ public class OpenGLAdapter implements i3DGraphics {
       gl2.glTexCoord2d(point.getTexturePoint().x, point.getTexturePoint().y);
       // gl2.glTexCoord2d(0, 0);
     }
-    gl2.glVertex3f(x, y, 1 - point.getInverseDepth());
+    gl2.glVertex3f(x, y, point.getDepth() / frustrumDepth);
     // gl2.glTexCoord2d(10000, 100.11);
   }
 
